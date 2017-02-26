@@ -1,0 +1,104 @@
+%% AMS-LaTeX Created with the Wolfram Language for Students - Personal Use Only : www.wolfram.com
+
+\documentclass{article}
+\usepackage{amsmath, amssymb, graphicx, setspace}
+
+\newcommand{\mathsym}[1]{{}}
+\newcommand{\unicode}[1]{{}}
+
+\begin{document}
+
+\title{A Charged Line Segment}
+\author{}
+\date{}
+\maketitle
+
+NAME: \\
+DATE:
+
+A mathematica notebook companion to Zangwill Section 3.3.5 A Charged Line Segment
+
+\section*{Potential from a charged line segment}
+
+\(\text{\textit{Zangwill}}\text{\textit{$ $}}\text{\textit{lFigure}}\text{\textit{$ $}}\text{\textit{$3.5$}}\)
+
+Exercise 1 [3pts] (on paper): Explicitly identify the how the terms dl, $\lambda $(l), and $\left| $\pmb{ r }- \pmb{ l}$\right| $ from Zangwill Eq. 3.13 are expressed in middle equation of Zangwill Eq. 3.30. 
+
+Exercise 2 [2pt] (on paper): Draw z{'} in the above image. { }Then, annotate $\left| $\pmb{ r }- \pmb{ l}$\right| $. 
+
+It takes work { }(see notes) to go from the physical situation described to an integral that you or \textit{ Mathematica} can compute. Zangwill{'}s result is the integral specified in Zangwill Eq. 3.30. 
+
+If I try to just plug this in to Mathematica, I run into problems (note the {``}Abort Evaluation{''} option in the Evaluation menu).
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Integrate}\left[\frac{\lambda }{4\pi  \text{$\epsilon $0}}\frac{1}{\sqrt{(\text{zp} - z)^2+ \rho ^2}},\{\text{zp},-L,L\}\right]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\text{$\$$Aborted}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\text{$\$$Aborted}\)
+\end{doublespace}
+
+This is usually a sign that \textit{ Mathematica} is trying to be very general, and the integral might work better if we told it about which quantities are real, positive, etc. 
+
+\begin{doublespace}
+\noindent\(\pmb{\text{Integrate}\left[\frac{\lambda }{4\pi  \text{$\epsilon $0}}\frac{1}{\sqrt{(\text{zp} - z)^2+ \rho ^2}},\{\text{zp},-L,L\},\text{Assumptions}\to \{\rho >0,\text{zp}\in \text{Reals},z\in \text{Reals},L>0\}\right]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(\frac{\lambda  \text{Log}\left[\frac{L+z+\sqrt{(L+z)^2+\rho ^2}}{-L+z+\sqrt{(L-z)^2+\rho ^2}}\right]}{4 \pi  \text{$\epsilon $0}}\)
+\end{doublespace}
+
+ Another route is to just get \textit{ Mathematica} to do the indefinite integral, which I actually did first instead of figuring out all the required rules above.
+
+\begin{doublespace}
+\noindent\(\pmb{\text{intfunc}=\text{Integrate}\left[\frac{\lambda }{4\pi  \text{$\epsilon $0}}1\left/\sqrt{(\text{zp} - z)^2+ \rho ^2}\right.,\text{zp}\right]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(-\frac{\lambda  \text{Log}\left[z-\text{zp}+\sqrt{(z-\text{zp})^2+\rho ^2}\right]}{4 \pi  \text{$\epsilon $0}}\)
+\end{doublespace}
+
+and then explicitly tell \textit{ Mathematica} do the algebra to define a function for the definite integral.\\
+\\
+I{'}m in the habit of using this slash-dot {``}/.{''} notation in \textit{ Mathematica,} which means {``}apply this replacement rule to this expression on the left{''}. Here I{'}m using it to first replace zp with L, then in the next term replace zp with -L. I{'}m also defining this as a function after evaluating the expressions, but show the result for our usual coordinate names right after.
+
+\begin{doublespace}
+\noindent\(\pmb{\varphi [\text{z$\_$},\rho \_]\text{:=}\text{Evaluate}[(\text{intfunc}\text{/.}\text{zp}\to L ) -(\text{intfunc}\text{/.}\text{zp}\to -L)]}\\
+\pmb{\varphi [z,\rho ]}\)
+\end{doublespace}
+
+\begin{doublespace}
+\noindent\(-\frac{\lambda  \text{Log}\left[-L+z+\sqrt{(-L+z)^2+\rho ^2}\right]}{4 \pi  \text{$\epsilon $0}}+\frac{\lambda  \text{Log}\left[L+z+\sqrt{(L+z)^2+\rho ^2}\right]}{4 \pi  \text{$\epsilon $0}}\)
+\end{doublespace}
+
+For thought: This is a little different from Zangwill 3.30. What happened? What{'}s different?Does it still work?
+
+Zangwill demonstrates a reconfiguration of this potential using a particular definition of \textit{ u} and \textit{ t} coordinates, { }shows that equipotentials are surfaces of constant \textit{ u}, and identifies those surfaces as ellipses with the ends of the line segment as a focus. This sort of demonstration is nice but hard to figure without knowing what you{'}re looking for and/or a LOT of fluency in mathematical patterns!\\
+\\
+Let{'}s plot this in less geometrical and {``}proof{''} style but more generally applicable way - which might inspire someone to consider looking for ellipsoidal solutions mathematically if encoutering this problem for the first time.\\
+\\
+To use \textit{ Mathematica}{'}s Contour plot, which plots contour lines of constant value, to plot the lines of constant potential, we need to put our potential in cartesian coordinates.\\
+\\
+After put in a number for L, we can contour plot it with \textit{ Mathematica} to see the equipotential geometry.
+
+\begin{doublespace}
+\noindent\(\pmb{L=1;}\\
+\pmb{\text{$\epsilon $0}=1;}\\
+\pmb{\lambda =1;}\\
+\pmb{\varphi [z,\rho ] \text{(*}\text{check} \text{that} I \text{got} \text{rid} \text{of} \text{all} \text{the} \text{unknown} \text{variables})}\)
+\end{doublespace}
+
+Exercise 3 [2 pts] (in \textit{ Mathematica}): Make the contour plot below produce equipotentials for a charged line.
+
+\begin{doublespace}
+\noindent\(\pmb{\text{ContourPlot}[}\\
+\pmb{x+\text{Sin}[z],}\\
+\pmb{\text{(*} \text{REPLACE} \text{THE} \text{ABOVE} \text{WITH} \text{AN} \text{EQUATION} \text{FOR} \varphi  \text{AS} A \text{FUNCTION} \text{OF} x \text{AND} z \text{IN} \text{THE} y=0 \text{PLANE} \text{*)}}\\
+\pmb{\{x,-2,2\},\{z,-2,2\},\text{Contours}\to 30,\text{PlotPoints}\to 60,\text{PlotRange}\to \text{All},\text{FrameLabel}\to \{x,z\},}\\
+\pmb{\text{ContourShading}\to \text{None}]}\)
+\end{doublespace}
+
