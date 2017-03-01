@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx,setspace}
+\begin{document}
+Dominic Martinez-Ta\\
+Physics 530A
+\section{}
+Two extremely long, cylindrical conductors of radii $a_1$ and $a_2$ are paralle and separated by a distance d which is very large compare to $a_1$ and $a_2$, but small compared to the length (so you can ignore end effects).
+\begin{enumerate}
+\item Show that the two-conductor capacitance per capacitance per unit length is given approximately by 
+\begin{equation}
+C \simeq \pi \epsilon_0 (ln\frac{d}{a})^{-1}
+\end{equation}
+where $a = \sqrt{a_1a_2}$.
+Note: the condition  $d \gg a_1, a2$ allows you to use superposition to determine the total field/ potential produced by the combination of the two capacitors (they are far enough apart to have negligable effectsr on each other's charge distributions). 
+Note 2: If we put $+Q$ and $-Q$ on the two conductors and the resulting potential difference between the two is $\Delta V$, then the capacitance is $C=\frac{Q}{\Delta V}$
+\end{enumerate}
+\section{solutions}
+\begin{equation}
+E_{tot} = E_{a_1} + E_{a_2} = \frac{Q}{2\pi\epsilon_0 L} + \frac{Q}{2\pi\epsilon_0 (d-L)} = \frac{Q}{2\pi\epsilon_0}(\frac{1}{L}+\frac{1}{d-L})
+\end{equation}
+\begin{equation}
+V = \int_{a_1}^{d-a_2}E dl
+\end{equation}
+This basically becomes (via mathematica):
+\begin{equation}
+V = \frac{Q}{2\pi\epsilon_0}ln(\frac{(d-a_1)(d-a_2)}{a_1a_2}) \Rightarrow \frac{Q}{2\pi\epsilon_0}2ln(\frac{d}{a_1a_2})\Rightarrow \frac{Q}{\pi\epsilon_0}2n(\frac{d}{a_1a_2})
+\end{equation}
+Since $a = a_1a_2$, we can say that
+\begin{equation}
+ \frac{Q}{\pi\epsilon_0}ln(\frac{d}{a_1a_2})\Rightarrow \frac{Q}{\pi\epsilon_0}ln(\frac{d}{a})
+\end{equation}
+Since we know by definition that $C = \frac{Q}{V}$, this equation then becomes:
+\begin{equation}
+C \simeq \frac{2\pi\epsilon_0}{ln(\frac{d}{a})}
+\end{equation}
+QED
+\end{document}
