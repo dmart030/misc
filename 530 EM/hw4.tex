@@ -1,0 +1,51 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,graphicx,setspace}
+\begin{document}
+Dominic Martinez-Ta\\
+Physics 530A
+\section{}
+A conducting sphere of radius a, floats in a dielectric fluid with dielectric constant $\frac{\epsilon}{\epsilon_0}$ such that it is half submerged in the fluid. The spehre is brought to potential V.
+\begin{enumerate}
+\item Find the electric field everywhere outside the sphere.
+\item Find the surface-charge distribution on the sphere.
+\item Find the polarization-charge density induced on the dielectric at r = a.
+\end{enumerate}
+\section{solution}
+\begin{enumerate}
+\item Since $\nabla \times E = 0$, we can assume that the field is continuous across the sphere. The electric displacement field, $D = \epsilon D$, across a closed surface enclosing the sphere is equal to the free charge Q.
+\begin{equation}
+\int D_{air}\cdot dA + \int D_{dielectric}\cdot dA = Q
+\end{equation}
+\begin{equation}
+2\pi a^2(\epsilon_1 E + \epsilon_0 E) = Q
+\end{equation}
+where $\epsilon_1$ = $\epsilon_0 \frac{\epsilon}{\epsilon_0}$
+\begin{equation}
+2\pi a^2(\epsilon_0 \frac{\epsilon}{\epsilon_0}E + \epsilon_0 E) = Q \rightarrow E = \frac{Q}{2\pi r^2} \frac{1}{\epsilon + \epsilon_0}
+\end{equation}
+\begin{equation}
+\therefore \int D_{diaelectric}\cdot dA = \frac{Q}{2\pi r^2}\frac{\epsilon}{\epsilon+\epsilon_0}
+\end{equation}
+and
+\begin{equation}
+\therefore  \int D_{air}\cdot dA = \frac{Q}{2\pi r^2}\frac{\epsilon_0}{\epsilon+\epsilon_0}
+\end{equation}
+
+\item The surface charge density/distribution is equal to the displacement on the surface of the sphere therefore r = a. That means that (4) and (5) become
+\begin{equation}
+\int D_{diaelectric}\cdot dA = \frac{Q}{2\pi r^2}\frac{\epsilon}{\epsilon+\epsilon_0}
+\end{equation}
+and
+\begin{equation}
+\therefore  \int D_{air}\cdot dA = \frac{Q}{2\pi a^2}\frac{\epsilon_0}{\epsilon+\epsilon_0}
+\end{equation}
+\item The surface polarisation charge exists only on the surface of the dielectric of the sphere. 
+\begin{equation}
+\sigma_p=-P(a) = -(\epsilon-\epsilon_0)E(a)
+\end{equation}
+Therefore the sum of the sigmas of the sphere exposed to the air and the other to the dielectric should be constant. That is:
+\begin{equation}
+\sigma+\sigma_0 =\epsilon E(a)-(\epsilon-\epsilon_0)E(a) \rightarrow \epsilon_0E(a) = \sigma_0
+\end{equation}
+\end{enumerate}
+\end{document}
